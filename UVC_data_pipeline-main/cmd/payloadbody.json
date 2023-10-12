@@ -1,0 +1,345 @@
+{
+    "count": 3,
+    "entities": [
+        {
+            "uuid": "2bc5c89f-f222-41c9-afb6-876656f495ba",
+            "properties": {
+                "founded_on": {
+                    "precision": "day",
+                    "value": "2022-03-08"
+                },
+                "website": {
+                    "value": "http://www.thinkgate.ch"
+                },
+                "identifier": {
+                    "permalink": "thinkgate-95ba",
+                    "image_id": "jojujaixyytvgks3ie5k",
+                    "uuid": "2bc5c89f-f222-41c9-afb6-876656f495ba",
+                    "entity_def_id": "organization",
+                    "value": "Thinkgate"
+                },
+                "ipo_status": "private",
+                "founder_identifiers": [
+                    {
+                        "entity_def_id": "person",
+                        "permalink": "dominique-léonard-henri",
+                        "uuid": "cd92db53-c3fd-4487-9d14-e24545fe7aad",
+                        "value": "Dominique Léonard Henri"
+                    }
+                ],
+                "linkedin": {
+                    "value": "https://www.linkedin.com/company/thinkgate-ag"
+                },
+                "short_description": "Airport operations - optimized",
+                "operating_status": "active",
+                "num_employees_enum": "c_00001_00010",
+                "funding_total": {
+                    "value_usd": 327705,
+                    "currency": "CHF",
+                    "value": 300000
+                },
+                "num_funding_rounds": 1,
+                "last_equity_funding_type": "pre_seed",
+                "last_funding_type": "pre_seed",
+                "categories": [
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "information-technology-dbca",
+                        "uuid": "dbca89fa-f083-5438-b4ad-d3fdeceb78e7",
+                        "value": "Information Technology"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "software",
+                        "uuid": "c08b5441-a05b-9777-b7a6-012728caddd9",
+                        "value": "Software"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "travel",
+                        "uuid": "8672f521-ce9a-e851-adff-c35d2441a0ad",
+                        "value": "Travel"
+                    }
+                ],
+                "location_identifiers": [
+                    {
+                        "permalink": "stettlen-bern",
+                        "uuid": "fb19ed36-f33a-f052-c842-4984042541b0",
+                        "location_type": "city",
+                        "entity_def_id": "location",
+                        "value": "Stettlen"
+                    },
+                    {
+                        "permalink": "bern-switzerland",
+                        "uuid": "d7b6cdb1-c454-aafb-49c4-b6fd05ed5c9c",
+                        "location_type": "region",
+                        "entity_def_id": "location",
+                        "value": "Bern"
+                    },
+                    {
+                        "permalink": "switzerland",
+                        "uuid": "078d9679-a862-02a2-57c8-8337e9a1eec8",
+                        "location_type": "country",
+                        "entity_def_id": "location",
+                        "value": "Switzerland"
+                    },
+                    {
+                        "permalink": "europe",
+                        "uuid": "6106f5dc-823e-5da8-40d7-51612c0b2c4e",
+                        "location_type": "continent",
+                        "entity_def_id": "location",
+                        "value": "Europe"
+                    }
+                ],
+                "last_funding_at": "2021-08-31",
+                "contact_email": "hello@thinkgate.ch",
+                "rank_org_company": 122925,
+                "funding_stage": "seed",
+                "last_funding_total": {
+                    "value_usd": 327705,
+                    "currency": "CHF",
+                    "value": 300000
+                },
+                "num_founders": 1
+            }
+        },
+        {
+            "uuid": "46b54839-ea40-4edc-91c7-a4f926beabdf",
+            "properties": {
+                "semrush_global_rank_mom": 7092769,
+                "founded_on": {
+                    "precision": "day",
+                    "value": "2022-02-02"
+                },
+                "semrush_visits_latest_month": 510,
+                "website": {
+                    "value": "https://www.codioimpact.com/"
+                },
+                "semrush_visit_pageview_mom_pct": -0.6363636363636364,
+                "semrush_visits_mom_pct": -0.9871756185878093,
+                "semrush_visit_pageviews": 1.0,
+                "identifier": {
+                    "permalink": "codio-impact",
+                    "image_id": "qtafkscg2pgrkurumtjp",
+                    "uuid": "46b54839-ea40-4edc-91c7-a4f926beabdf",
+                    "entity_def_id": "organization",
+                    "value": "Codio Impact"
+                },
+                "semrush_global_rank": 7670511,
+                "ipo_status": "private",
+                "founder_identifiers": [
+                    {
+                        "permalink": "sonja-radovic",
+                        "image_id": "v18fjayv5d6pfbn61xwe",
+                        "uuid": "d3be765d-4255-41cf-a5f9-5651d7dc608a",
+                        "entity_def_id": "person",
+                        "value": "Sonja Radovic"
+                    },
+                    {
+                        "permalink": "tilman-kemper-9042",
+                        "image_id": "nkzkveamuzc4lwrbacaw",
+                        "uuid": "6ed313a0-9686-4a96-a69b-a46312d59042",
+                        "entity_def_id": "person",
+                        "value": "Tilman Kemper"
+                    }
+                ],
+                "description": "Codio Impact is a Software-as-a-Service company based out of Berlin, Germany. We unlock sustainability performance for your company by automating the way you collect, manage and report your Environmental, Social, Governance (ESG) data. At the same time, we allow you to remain fully complaint with the newest regulation, leading standards and any type of sustainability audit.",
+                "semrush_bounce_rate": 1.0,
+                "linkedin": {
+                    "value": "https://www.linkedin.com/company/codio-impact/"
+                },
+                "short_description": "Codio Impact automates the way companies collect, manage and report their Environmental, Social, Governance (ESG) data.",
+                "num_investors": 3,
+                "operating_status": "active",
+                "semrush_visit_duration": 0,
+                "num_employees_enum": "c_00001_00010",
+                "funding_total": {
+                    "value_usd": 0,
+                    "value": 0
+                },
+                "num_funding_rounds": 1,
+                "semrush_global_rank_mom_pct": 12.276706557598374,
+                "last_equity_funding_type": "pre_seed",
+                "investor_identifiers": [
+                    {
+                        "permalink": "apxberlin",
+                        "image_id": "sl9lkkkub4osrrq6ck1p",
+                        "uuid": "9f5091dc-4504-400a-9479-4845c4c925f3",
+                        "entity_def_id": "organization",
+                        "value": "APX"
+                    },
+                    {
+                        "permalink": "angel-invest-ventures",
+                        "image_id": "bwcto1qf5atntzqwzvfk",
+                        "uuid": "69ac382a-0be4-4c82-a261-64975988d4db",
+                        "entity_def_id": "organization",
+                        "value": "Angel Invest"
+                    },
+                    {
+                        "permalink": "smart-infrastructure-ventures",
+                        "image_id": "nbz55x92kunhjwwsk9ry",
+                        "uuid": "c7b54dd3-56e4-49a6-ad68-cea2f6df9594",
+                        "entity_def_id": "organization",
+                        "value": "Smart Infrastructure Ventures ('SIVentures')"
+                    }
+                ],
+                "last_funding_type": "pre_seed",
+                "categories": [
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "software",
+                        "uuid": "c08b5441-a05b-9777-b7a6-012728caddd9",
+                        "value": "Software"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "sustainability-e391",
+                        "uuid": "e391c491-c09d-a04e-b5b6-57aa8b8d0fc6",
+                        "value": "Sustainability"
+                    }
+                ],
+                "location_identifiers": [
+                    {
+                        "permalink": "berlin-berlin",
+                        "uuid": "e61662e5-c5c2-c4d9-2a31-d0e6d6453375",
+                        "location_type": "city",
+                        "entity_def_id": "location",
+                        "value": "Berlin"
+                    },
+                    {
+                        "permalink": "berlin-germany",
+                        "uuid": "dcc0539e-638a-fda2-0229-07d53b4e96a9",
+                        "location_type": "region",
+                        "entity_def_id": "location",
+                        "value": "Berlin"
+                    },
+                    {
+                        "permalink": "germany",
+                        "uuid": "6085b4bf-b18a-1763-a04e-fdde3f6aba94",
+                        "location_type": "country",
+                        "entity_def_id": "location",
+                        "value": "Germany"
+                    },
+                    {
+                        "permalink": "europe",
+                        "uuid": "6106f5dc-823e-5da8-40d7-51612c0b2c4e",
+                        "location_type": "continent",
+                        "entity_def_id": "location",
+                        "value": "Europe"
+                    }
+                ],
+                "last_funding_at": "2022-02-08",
+                "contact_email": "hello@codioimpact.com",
+                "rank_org_company": 162304,
+                "funding_stage": "seed",
+                "num_founders": 2
+            }
+        },
+        {
+            "uuid": "266f0f20-f433-4221-865f-a8ca946e1597",
+            "properties": {
+                "founded_on": {
+                    "precision": "day",
+                    "value": "2022-02-02"
+                },
+                "identifier": {
+                    "permalink": "corintis",
+                    "image_id": "frljdr2ivtdhzujgncfc",
+                    "uuid": "266f0f20-f433-4221-865f-a8ca946e1597",
+                    "entity_def_id": "organization",
+                    "value": "Corintis"
+                },
+                "ipo_status": "private",
+                "linkedin": {
+                    "value": "https://www.linkedin.com/in/corintis-sa-416b69225/?originalSubdomain=ch"
+                },
+                "short_description": "Corintis develops cooling technologies for high performance semiconductors.",
+                "description": "Codio Impact is a Software-as-a-Service company based out of Berlin, Germany. We unlock sustainability performance for your company by automating the way you collect, manage and report your Environmental, Social, Governance (ESG) data. At the same time, we allow you to remain fully complaint with the newest regulation, leading standards and any type of sustainability audit.",
+                "num_investors": 1,
+                "operating_status": "active",
+                "num_employees_enum": "c_00001_00010",
+                "funding_total": {
+                    "value_usd": 0,
+                    "value": 0
+                },
+                "num_funding_rounds": 1,
+                "last_equity_funding_type": "seed",
+                "investor_identifiers": [
+                    {
+                        "permalink": "acequia-capital",
+                        "image_id": "v1455130609/nhjbzsofmokkosqiuz4j.png",
+                        "uuid": "de03c4eb-3e08-16aa-b1db-ad0711e845e1",
+                        "entity_def_id": "organization",
+                        "value": "Acequia Capital (AceCap)"
+                    }
+                ],
+                "last_funding_type": "seed",
+                "categories": [
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "electronics",
+                        "uuid": "e173f255-3db1-9d02-74cb-f58a1f45b483",
+                        "value": "Electronics"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "industrial-engineering",
+                        "uuid": "92e4e78e-9327-235b-b7ad-a48b5e54ac55",
+                        "value": "Industrial Engineering"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "machine-learning",
+                        "uuid": "5ea0cdb7-c9a6-47fc-50f8-c9b0fac04863",
+                        "value": "Machine Learning"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "product-research",
+                        "uuid": "f213df87-6356-e51f-245a-cf9b7e788b13",
+                        "value": "Product Research"
+                    },
+                    {
+                        "entity_def_id": "category",
+                        "permalink": "semiconductor",
+                        "uuid": "20cd907a-d9d6-2916-8fe3-e2ea07ae915e",
+                        "value": "Semiconductor"
+                    }
+                ],
+                "location_identifiers": [
+                    {
+                        "permalink": "rolle-geneve",
+                        "uuid": "bb5148b2-a6a4-524f-fbdc-11d9f249c16a",
+                        "location_type": "city",
+                        "entity_def_id": "location",
+                        "value": "Rolle"
+                    },
+                    {
+                        "permalink": "geneve-switzerland",
+                        "uuid": "e0ddce18-611d-d64c-3532-78298a3964ab",
+                        "location_type": "region",
+                        "entity_def_id": "location",
+                        "value": "Geneve"
+                    },
+                    {
+                        "permalink": "switzerland",
+                        "uuid": "078d9679-a862-02a2-57c8-8337e9a1eec8",
+                        "location_type": "country",
+                        "entity_def_id": "location",
+                        "value": "Switzerland"
+                    },
+                    {
+                        "permalink": "europe",
+                        "uuid": "6106f5dc-823e-5da8-40d7-51612c0b2c4e",
+                        "location_type": "continent",
+                        "entity_def_id": "location",
+                        "value": "Europe"
+                    }
+                ],
+                "last_funding_at": "2022-01-21",
+                "rank_org_company": 549582,
+                "funding_stage": "seed"
+            }
+        }
+    ]
+}

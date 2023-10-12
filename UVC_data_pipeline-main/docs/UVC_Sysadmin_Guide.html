@@ -1,0 +1,315 @@
+<html> 
+	<head> 
+		<title></title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	</head> 
+	<body> 
+<div id=content> 
+
+<h1 id="uvc-sysadmin-guide">UVC Sysadmin Guide</h1>
+<p>The following document is a very detailed guide on how to manage the UVC cloud resources used for the UVC data pipeline.</p>
+<p>Working as a sysadmin on the system using a Unix operating system (Mac OS X, Linux or FreeBSD) makes your life much easier, since lots of the tools needed to manage the cloud systems are natively installed on the system, or an installation of them is very uncomplicated.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#software-requirements-to-follow-along">Software requirements to follow along</a></li>
+<li><a href="#what-is-the-uvc-data-pipeline">What is the UVC data pipeline?</a>
+<ul>
+<li><a href="#what-are-the-data-sources-that-collect-data-as-of-february-2023">What are the data sources that collect data (as of February 2023)?</a></li>
+</ul></li>
+<li><a href="#faqs-data-collection">FAQs data collection</a>
+<ul>
+<li><a href="#which-commands-should-i-run-to-collect-the-data">Which commands should I run to collect the data?</a></li>
+<li><a href="#restarting-a-mongodb-database">Restarting a MongoDB database</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="software-requirements-to-follow-along">Software requirements to follow along</h2>
+<p>The following software is needed/recommended to work with the cloud resources:</p>
+<ul>
+<li>A terminal program
+<ul>
+<li>Required to run <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a> to establish a connection with the servers.</li>
+<li>Recommended: default terminal program of any Unix operating system.</li>
+<li>It should also be possible to work with Windows [Google how to establish an SSH connection with Windows (it probably requires using Putty)].</li>
+<li>Further remarks: in the following code snippets meant to be executed with a terminal program if a <code>$</code> [dollar sign] appears before the command, it means that the user does NOT require sudo rights to run the code in the terminal. On the other hand, if a <code>#</code> [pound sign] appears, the command is should be executed as root.
+<ul>
+<li><strong>VERY IMPORTANT</strong>: DO NOT, under any circumstances, write either the dollar or pound sign, when executing a command in the terminal, they are only symbolically present in the documentation to inform you about the priviledges needed to run a command.</li>
+</ul></li>
+</ul></li>
+<li>SSH/OpenSSH
+<ul>
+<li>This program actually establishes the SSH connection.</li>
+<li>It should be in the default installation of all Unix operating systems.</li>
+</ul></li>
+<li>The Go programming language
+<ul>
+<li>Required to compile and run the codebase, after cloning/downloading it from GitHub.</li>
+<li>It is recommended to use Go version +1.19 (previous versions might not even compile the current codebase, so it is STRONGLY advised against using previous versions to compile the codebase).</li>
+<li>If Go is not present in your Mac, run the following code in your terminal to install it (it requires you to have already install the <code>brew</code> Mac package manager):
+<ul>
+<li><code># brew install go</code></li>
+<li>After <code>brew</code> finishes, run <code>$ go version</code> to check what version of Go has been installed in your system.</li>
+</ul></li>
+<li>Further remarks: if it would be too cumbersome to install Go locally in your development laptop, you can generate compiled versions of the codebase for basically all platforms using GitHub Actions and Goreleaser.</li>
+</ul></li>
+</ul>
+<h2 id="what-is-the-uvc-data-pipeline">What is the UVC data pipeline?</h2>
+<h3 id="what-are-the-data-sources-that-collect-data-as-of-february-2023">What are the data sources that collect data (as of February 2023)?</h3>
+<p>As of February 2023, we are able to collect data reliably from Crunchbase.</p>
+<h2 id="faqs-data-collection">FAQs data collection</h2>
+<h3 id="which-commands-should-i-run-to-collect-the-data">Which commands should I run to collect the data?</h3>
+<ol type="1">
+<li>Install the latest version of the UVC data collector software:
+<ul>
+<li>If you have configured your computer to have access with your SSH keys to the UVC’s repos in GitHub, you can directly clone the GitHub repository to your computer by running the following code snippet in your terminal (the repo will be cloned to the directory were you currently are in your terminal session):</li>
+</ul>
+<pre><code>$ git clone git@github.com:uvc-partners/UVC_data_pipeline.git</code></pre>
+<ul>
+<li>Otherwise, if you do not have SSH key access to the repository, visit <code>https://github.com/uvc-partners/UVC_data_pipeline</code> and download a zip file with the codebase.</li>
+<li>The GitHub account that you use to login to the repository should have access to the repository. You can find the credentials for the official UVC GitHub account on the <code>Credentials</code> file on the UVC Data Team Sharepoint folder.</li>
+</ul></li>
+<li>Go to the base directory of the repository that was previously cloned, and compile the codebase by executing:</li>
+</ol>
+<pre><code>$ go build -o cbExtractor.bin ./cmd </code></pre>
+<p>If no errors occured while compiling the codebase, you will now have an executable file named <code>cbExtractor.bin</code> at the root folder of the repository. You will use this executable for the following tasks: 1. Extracting data from Crunchbase 2. Inserting the extracted data from Crunchbase into the cloud databases.</p>
+<p>After you have once built this executable, you do not have to repeat steps 1 and 2 next time you want to extract data or insert the data to a database. Just use the same executable file that was compiled the first time.</p>
+<ol start="3" type="1">
+<li>Check that you have the <code>.env</code> file with the <strong>secrets</strong> in the same directory in which the executable file is. The <code>.env</code> file contains all the passwords and/or sensitive data to access the databases and to extract data from Crunchbase, that should not be leaked to third parties through a repository.</li>
+</ol>
+<p>If this file is missing, you won’t be able to either extract data from Crunchbase or insert data into the databases.</p>
+<ol start="4" type="1">
+<li>Run the executable to extract data from Crunchbase by running the following command in the same folder where the executable and the <code>.env</code> file are located:</li>
+</ol>
+<pre><code>$ ./cbExtractor.bin extract --no-proxy</code></pre>
+<p><strong>Important details:</strong></p>
+<ul>
+<li>You should execute this file when connected to either a residential or office IP, if you try to execute this file from within a cloud instance, cloud server, cloud VM, etc. Crunchbase will flag you as a bot and you will not be able to extract any data at all.</li>
+<li>The extraction process can take up to an hour or more, to fully extract the thousands of start-ups available through the Crunchbase query used.</li>
+<li>Do not close your terminal window while the extraction process is taking place, the program will tell you how much progress it has made. When it is ready with the extraction, it will also tell you that through a text message in the terminal session.</li>
+<li>If you want to know more about the different options and subcommands available through the executable, you can always provide the executable with the <code>-h</code> or <code>--help</code> flags. For example, <code>./cbExtractor.bin --help</code> will print a help menu on the terminal presenting all available subcommands, like <code>extract</code> and <code>insert</code>.</li>
+<li>If you have to abruptly cancel an ongoing data extraction before it is done, you can type <code>Ctrl + C</code> in the terminal window where the data extraction is taking place. This will cancel the ongoing process.</li>
+</ul>
+<ol start="5" type="1">
+<li>After a successful extraction of Crunchbase data, you will now have a file in the folder where the executable is, named something along the lines of <em>CBData_xxxxx</em> where the <em>xxxx</em> are a random string of numbers. You can now insert this data to the cloud MongoDB databases that host the data by running the following command:</li>
+</ol>
+<pre><code>$ ./cbExtractor.bin db insert --file &lt;DATA_FILE&gt; --remote &lt;IP_DATABASE&gt;</code></pre>
+<p>You should replace <code>&lt;DATA_FILE&gt;</code> with the path to the file that will be inserted into the database, in this case <code>./CBData_xxxx</code>.</p>
+<p><code>&lt;IP_DATABASE&gt;</code> should be the IP address of the remote server hosting the MongoDB instance.</p>
+<p><strong>Remarks</strong></p>
+<ul>
+<li>I normally insert the data right away to the <code>production1</code> and <code>staging1</code> servers. After running the command that inserts the data, I check with MongoDB Compass, if the collections within MongoDB have been updated. Simply check if there are any documents with a timestamp equal to the timestamp when the extraction took place.</li>
+<li>In the unlikely event that a connection cannot be established with the server and the command to insert the documents fails, you should connect through SSH with the server and restart MongoDB.</li>
+</ul>
+<h3 id="restarting-a-mongodb-database">Restarting a MongoDB database</h3>
+<ol type="1">
+<li>Open your terminal or command line interface.</li>
+<li>You should already have in your system the SSH key that allows you to connect with the server. The key should be stored at <code>~/.ssh/</code></li>
+<li>Type the following command to connect to the FreeBSD server via SSH:</li>
+</ol>
+<pre><code>ssh root@serverIP</code></pre>
+<p>Replace “serverIP” with the actual IP address of the server.</p>
+<p><strong>Important remarks</strong></p>
+<ul>
+<li>Sometimes, especially the first time that you try to connect to the server through SSH, the system does not recognize which SSH key in your system should be used to connect to the server. You will get an error while connecting to the server. In that case run the same ssh command but add the <code>-i</code> flag, that tells SSH specifically which SSH key to use:</li>
+</ul>
+<pre><code>ssh root@serverIP -i &lt;PATH_SSH_KEY&gt;</code></pre>
+<p>Replace <code>&lt;PATH_SSH_KEY&gt;</code> with the path to the SSH key in your system, like for example, <code>~/.ssh/UVC_Key</code>, if you named your key <code>UVC_Key</code> and stored it at <code>~/.ssh</code></p>
+<ol start="4" type="1">
+<li>Type the following command to restart the MongoDB service:</li>
+</ol>
+<pre><code>service mongod restart</code></pre>
+<ol start="5" type="1">
+<li>Wait for the service to restart, and then type exit to log out of the server.</li>
+</ol>
+</div> 
+ 
+<style type=text/css>body { 
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  color: #111; 
+  background-color: #fdfdfd; 
+  -webkit-text-size-adjust: 100%; 
+  -webkit-font-feature-settings: "kern" 1; 
+  -moz-font-feature-settings: "kern" 1; 
+  -o-font-feature-settings: "kern" 1; 
+  font-feature-settings: "kern" 1; 
+  font-kerning: normal; 
+  padding: 30px; 
+} 
+ 
+@media only screen and (max-width: 600px) { 
+  body { 
+    padding: 5px; 
+  } 
+ 
+  body > #content { 
+    padding: 0px 20px 20px 20px !important; 
+  } 
+} 
+ 
+body > #content { 
+  margin: 0px; 
+  max-width: 900px; 
+  border: 1px solid #e1e4e8; 
+  padding: 10px 40px; 
+  padding-bottom: 20px; 
+  border-radius: 2px; 
+  margin-left: auto; 
+  margin-right: auto; 
+} 
+ 
+hr { 
+  color: #bbb; 
+  background-color: #bbb; 
+  height: 1px; 
+  flex: 0 1 auto; 
+  margin: 1em 0; 
+  padding: 0; 
+  border: none; 
+} 
+ 
+/** 
+ * Links 
+ */ 
+a { 
+  color: #0366d6; 
+  text-decoration: none; } 
+  a:visited { 
+    color: #0366d6; } 
+  a:hover { 
+    color: #0366d6; 
+    text-decoration: underline; } 
+ 
+pre { 
+  background-color: #f6f8fa; 
+  border-radius: 3px; 
+  font-size: 85%; 
+  line-height: 1.45; 
+  overflow: auto; 
+  padding: 16px; 
+} 
+ 
+/** 
+  * Code blocks 
+  */ 
+ 
+code { 
+  background-color: rgba(27,31,35,.05); 
+  border-radius: 3px; 
+  font-size: 85%; 
+  margin: 0; 
+  word-wrap: break-word; 
+  padding: .2em .4em; 
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace; 
+} 
+ 
+pre > code { 
+  background-color: transparent; 
+  border: 0; 
+  display: inline; 
+  line-height: inherit; 
+  margin: 0; 
+  overflow: visible; 
+  padding: 0; 
+  word-wrap: normal; 
+  font-size: 100%; 
+} 
+ 
+ 
+/** 
+ * Blockquotes 
+ */ 
+blockquote { 
+  margin-left: 30px; 
+  margin-top: 0px; 
+  margin-bottom: 16px; 
+  border-left-width: 3px; 
+  padding: 0 1em; 
+  color: #828282; 
+  border-left: 4px solid #e8e8e8; 
+  padding-left: 15px; 
+  font-size: 18px; 
+  letter-spacing: -1px; 
+  font-style: italic; 
+} 
+blockquote * { 
+  font-style: normal !important; 
+  letter-spacing: 0; 
+  color: #6a737d !important; 
+} 
+ 
+/** 
+ * Tables 
+ */ 
+table { 
+  border-spacing: 2px; 
+  display: block; 
+  font-size: 14px; 
+  overflow: auto; 
+  width: 100%; 
+  margin-bottom: 16px; 
+  border-spacing: 0; 
+  border-collapse: collapse; 
+} 
+ 
+td { 
+  padding: 6px 13px; 
+  border: 1px solid #dfe2e5; 
+} 
+ 
+th { 
+  font-weight: 600; 
+  padding: 6px 13px; 
+  border: 1px solid #dfe2e5; 
+} 
+ 
+tr { 
+  background-color: #fff; 
+  border-top: 1px solid #c6cbd1; 
+} 
+ 
+table tr:nth-child(2n) { 
+  background-color: #f6f8fa; 
+} 
+ 
+/** 
+ * Others 
+ */ 
+ 
+img { 
+  max-width: 100%; 
+} 
+ 
+p { 
+  line-height: 24px; 
+  font-weight: 400; 
+  font-size: 16px; 
+  color: #24292e; } 
+ 
+ul { 
+  margin-top: 0; } 
+ 
+li { 
+  color: #24292e; 
+  font-size: 16px; 
+  font-weight: 400; 
+  line-height: 1.5; } 
+ 
+li + li { 
+  margin-top: 0.25em; } 
+ 
+* { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+  color: #24292e; } 
+ 
+a:visited { 
+  color: #0366d6; } 
+ 
+h1, h2, h3 { 
+  border-bottom: 1px solid #eaecef; 
+  color: #111; 
+  /* Darker */ } </style> 
+ 
+ 
+</body> 
+</html> 

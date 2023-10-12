@@ -1,0 +1,72 @@
+{
+    "uuid": "46b54839-ea40-4edc-91c7-a4f926beabdf",
+    "timestamp": "2022-04-27T13:45:00.000Z",
+    "organization_name": "Codio Impact",
+    "funding_stage": "seed",
+    "founded_on": "2022-02-02",
+    "operating_status": "active",
+    "semrush_visits_latest_month": 510,
+    "semrush_bounce_rate": 1.0,
+    "semrush_visit_duration": 0,
+    "website": "https://www.codioimpact.com/",
+    "semrush_visit_pageviews": 1.0,
+    "entity_def_id": "organization",
+    "num_founders": 2,
+    "founder_identifiers": [
+        {
+            "permalink": "sonja-radovic",
+            "uuid": "d3be765d-4255-41cf-a5f9-5651d7dc608a",
+            "entity_def_id": "person",
+            "value": "Sonja Radovic"
+        },
+        {
+            "permalink": "tilman-kemper-9042",
+            "uuid": "6ed313a0-9686-4a96-a69b-a46312d59042",
+            "entity_def_id": "person",
+            "value": "Tilman Kemper"
+        }
+    ],
+    "description": "Codio Impact is a Software-as-a-Service company based out of Berlin, Germany. We unlock sustainability performance for your company by automating the way you collect, manage and report your Environmental, Social, Governance (ESG) data. At the same time, we allow you to remain fully complaint with the newest regulation, leading standards and any type of sustainability audit.",
+    "short_description": "Codio Impact automates the way companies collect, manage and report their Environmental, Social, Governance (ESG) data.",
+    "linkedin": "https://www.linkedin.com/company/codio-impact/",
+    "num_employees_enum": "1-10",
+    "num_investors": 3,
+    "funding_total": 327705,
+    "num_funding_rounds": 1,
+    "last_equity_funding_type": "pre_seed",
+    "last_funding_type": "pre_seed",
+    "last_funding_at": "2022-02-08",
+    "investor_identifiers": [
+        {
+            "permalink": "apxberlin",
+            "uuid": "9f5091dc-4504-400a-9479-4845c4c925f3",
+            "entity_def_id": "organization",
+            "value": "APX"
+        },
+        {
+            "permalink": "angel-invest-ventures",
+            "uuid": "69ac382a-0be4-4c82-a261-64975988d4db",
+            "entity_def_id": "organization",
+            "value": "Angel Invest"
+        },
+        {
+            "permalink": "smart-infrastructure-ventures",
+            "uuid": "c7b54dd3-56e4-49a6-ad68-cea2f6df9594",
+            "entity_def_id": "organization",
+            "value": "Smart Infrastructure Ventures ('SIVentures')"
+        }
+    ],
+    "industries": [
+        {
+            "uuid": "c08b5441-a05b-9777-b7a6-012728caddd9",
+            "value": "Software"
+        },
+        {
+            "uuid": "e391c491-c09d-a04e-b5b6-57aa8b8d0fc6",
+            "value": "Sustainability"
+        }
+    ],
+    "city": "Berlin",
+    "country": "Germany",
+    "contact_email": "hello@codioimpact.com"
+}

@@ -1,0 +1,17 @@
+{
+    "cb-referer-url": [
+        "https://www.crunchbase.com/v4/data/lists/organization.companies/343cbe1f-7511-4263-939c-0c3f3f7a729d?source=list",
+        "https://www.crunchbase.com/v4/data/lists/organization.companies/cca3638b-63fa-419e-b7bb-183754aea315?source=list",
+        "https://www.crunchbase.com/v4/data/lists/organization.companies/29874f03-3fc4-4d88-a11e-91c18316866c?source=list"
+    ],
+    "cb-accepted-lg": [
+        "en-US,en;q=0.5",
+        "en-GB,en-US;q=0.9,en;q=0.8",
+        "en-GB,en-US;q=0.8,en;q=0.9"
+    ],
+    "cb-user-agent": [
+        "Windows 10/ Edge browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246",
+        "Windows 7/ Chrome browser: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36",
+        "Mac OS X10/Safari browser: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9"
+    ]
+}
